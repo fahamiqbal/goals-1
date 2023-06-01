@@ -36,7 +36,7 @@ export class LoginComponent {
     var res = JSON.parse(response);
     if(res.id)
     {
-      localStorage.setItem('session_ID',res.id);
+      localStorage.setItem('user',JSON.stringify(res));
       this.router.navigate(['/auth/register']);
     }
     else
