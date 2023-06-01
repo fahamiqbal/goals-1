@@ -12,36 +12,37 @@ import {ApiService} from "../../../core/crm-api/api.service";
 export class LoginComponent {
 
   loginForm = this.formBuilder.group({
-    username: '',
+    email: '',
     password: ''
   });
 
   constructor(private formBuilder: FormBuilder,private service:ApiService,private router: Router) {}
 
-  onSubmit(): void {
-    // var params = {
-    //   user_auth: {
-    //     user_name: this.loginForm.username.value,
-    //     password: this.loginForm.password.value,
-    //     encryption: 'PLAIN'
-    //   },
-    //   application_name: '',
-    //   name_value_list: {
-    //     name: 'notifyonsave',
-    //     value: 'true'
-    //   }
-    // };
-    // var response = await this.service.CALL(params, 'login');
-    // var res = JSON.parse(response);
-    // if(res.id)
-    // {
-    //   localStorage.setItem('session_ID',res.id);
-    //   this.router.navigate(['/admin/admin-home']);
-    // }
-    // else
-    // {
-    //   alert(res.description);
-    // }
+  async onSubmit() {
+    console.log(this.loginForm.controls['email'].value);
+    var params = {
+      user_auth: {
+        user_name: this.loginForm.controls['email'].value,
+        password: this.loginForm.controls['password'].value,
+        encryption: 'PLAIN'
+      },
+      application_name: '',
+      name_value_list: {
+        name: 'notifyonsave',
+        value: 'true'
+      }
+    };
+    var response = await this.service.CALL(params, 'login');
+    var res = JSON.parse(response);
+    if(res.id)
+    {
+      localStorage.setItem('session_ID',res.id);
+      this.router.navigate(['/auth/register']);
+    }
+    else
+    {
+      alert(res.description);
+    }
     console.warn('Your order has been submitted', this.loginForm.value);
     this.loginForm.reset();
   }
