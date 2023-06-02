@@ -37,7 +37,7 @@ export class LoginComponent {
     if(res.id)
     {
       localStorage.setItem('user',JSON.stringify(res));
-      this.router.navigate(['/auth/register']);
+      this.router.navigate(['/dashboard/home']);
     }
     else
     {

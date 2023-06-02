@@ -8,6 +8,12 @@ import { AuthComponent } from './layouts/auth/auth.component';
 import { LoginComponent } from './layouts/auth/login/login.component';
 import { RegisterComponent } from './layouts/auth/register/register.component';
 import {ReactiveFormsModule} from "@angular/forms";
+import { HomeComponent } from './layouts/modules/home/home.component';
+import { DashboardComponent } from './layouts/modules/dashboard/dashboard.component';
+import { DashboardNavbarComponent } from './components/dashboard-navbar/dashboard-navbar.component';
+import {FontAwesomeModule} from "@fortawesome/angular-fontawesome";
+
+
 
 @NgModule({
   declarations: [
@@ -15,12 +21,16 @@ import {ReactiveFormsModule} from "@angular/forms";
     AuthNavbarComponent,
     AuthComponent,
     LoginComponent,
-    RegisterComponent
+    RegisterComponent,
+    HomeComponent,
+    DashboardComponent,
+    DashboardNavbarComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    FontAwesomeModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
