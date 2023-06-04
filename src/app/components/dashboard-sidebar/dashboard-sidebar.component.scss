@@ -1,21 +1,28 @@
-//@tailwind base;
-//@tailwind components;
-//@tailwind utilities;
-//
-//
-//@layer components{
-//  .sidebar-icon {
-//    @apply h-16 w-16 flex items-center justify-center mt-4 mb-2 relative
-//    mx-auto text-palleteO0 hover:bg-palleteO3 bg-gray-600
-//    rounded-3xl hover:rounded-xl transition-all duration-200;
-//  }
-//  //.sidebar-tooltip {
-//  //  @apply
-//  //  absolute w-auto p-2 m-2 min-w-max left-14 rounded-md
-//  //  shadow-md text-palleteO0 bg-gray-900 text-xs font-bold
-//  //  scale-100 origin-left;
-//  //}
-//}
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+@layer components{
+  .sidebar-icon {
+    @apply h-16 w-16 flex items-center justify-center mt-4 mb-2 relative
+    mx-auto text-palleteO0 hover:bg-palleteO3 bg-gray-600
+    rounded-3xl hover:rounded-xl transition-all duration-200;
+  }
+  .sidebar-text {
+    @apply flex items-center justify-center mt-1 mb-2 relative
+    mx-auto text-palleteO0 hover:bg-palleteO3 bg-gray-600
+    rounded-3xl hover:rounded-xl transition-all duration-200;
+  }
+
+
+  //.sidebar-tooltip {
+  //  @apply
+  //  absolute w-auto p-2 m-2 min-w-max left-14 rounded-md
+  //  shadow-md text-palleteO0 bg-gray-900 text-xs font-bold
+  //  scale-100 origin-left;
+  //}
+}
 ////transition-all duration-100
 
 
@@ -27,7 +34,7 @@
   z-index: 1; /* Stay on top */
   top: 0;
   left: 0;
-  background-color: #111; /* Black*/
+  background-color: #0D0D0D; /* Black*/
   overflow-x: hidden; /* Disable horizontal scroll */
   padding-top: 60px; /* Place content 60px from the top */
   transition: 0.5s; /* 0.5 second transition effect to slide in the sidebar */
@@ -37,7 +44,7 @@
 .sidebar a {
   padding: 8px 8px 8px 32px;
   text-decoration: none;
-  font-size: 25px;
+  font-size: 15px;
   color: #818181;
   display: block;
   transition: 0.3s;

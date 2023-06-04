@@ -24,11 +24,24 @@
 
 
 <div id="mySidebar" class="sidebar">
-  <a href="javascript:void(0)" class="closebtn" (click)="closeNav()">&times;</a>
-  <a href="#">About</a>
-  <a href="#">Services</a>
-  <a href="#">Clients</a>
-  <a href="#">Contact</a>
+  <a href="javascript:void(0)" class="closebtn mt-3" (click)="closeNav()">&times;</a>
+
+
+  <a href="#" class="group" *ngFor="let module of modules">
+        <div class="sidebar-icon group-hover:rounded-xl  group-hover:bg-palleteO3" >
+          <fa-icon  [icon]="icons['Accounts']"  size="2x"></fa-icon>
+        </div>
+        <div class="sidebar-text group-hover:rounded-xl group-hover:bg-palleteO3" >
+          <span class="m-3" class="{{module.module_key}}">{{module.module_label}}</span>
+        </div>
+  </a>
+
+<!--  <ul>-->
+<!--    <li *ngFor="let number of modules">{{number.module_key}}</li>-->
+<!--  </ul>-->
+
+
+
 </div>
 
 <!--<div id="main">-->

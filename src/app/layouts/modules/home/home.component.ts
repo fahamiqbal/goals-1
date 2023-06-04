@@ -8,20 +8,5 @@ import {Router} from "@angular/router";
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent {
-  constructor(service: ApiService, private router: Router) {
-    service = new ApiService();
-    console.log(this.getModules(service));
-    console.log("hello");
 
-  }
-
-  async getModules(service: ApiService) {
-    let user = JSON.parse(localStorage.getItem('user') || '{}');
-
-    var params = {
-      session: user.id,
-      filter: "default"
-    }
-    await service.CALL(params, "get_available_modules");
-  }
 }

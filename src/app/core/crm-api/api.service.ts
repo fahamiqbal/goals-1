@@ -17,7 +17,6 @@ export class ApiService {
     };
     return axios.get<any>(config.url)
       .then((response) => {
-        console.log(response)
         return JSON.stringify(response.data);
       })
       .catch((error) => {

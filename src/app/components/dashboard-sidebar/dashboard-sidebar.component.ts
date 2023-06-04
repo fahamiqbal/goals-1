@@ -1,8 +1,12 @@
-import { Component } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {faAddressBook} from "@fortawesome/free-solid-svg-icons";
 import {faUser} from "@fortawesome/free-solid-svg-icons/faUser";
 import {faPeopleGroup} from "@fortawesome/free-solid-svg-icons";
 import {MessageService} from "../../core/message-service/message.service";
+import {ApiService} from "../../core/crm-api/api.service";
+import {Router} from "@angular/router";
+
+
 
 
 @Component({
@@ -10,8 +14,10 @@ import {MessageService} from "../../core/message-service/message.service";
   templateUrl: './dashboard-sidebar.component.html',
   styleUrls: ['./dashboard-sidebar.component.scss']
 })
-export class DashboardSidebarComponent {
-  icons = {
+export class DashboardSidebarComponent implements OnInit{
+
+
+   icons = {
     Home : faPeopleGroup,
     Accounts : faPeopleGroup,
     Contacts : faPeopleGroup,
@@ -46,12 +52,36 @@ export class DashboardSidebarComponent {
     Surveys : faPeopleGroup,
 
   }
+  modules:any= null;
 
-  constructor(private messageService: MessageService) {
+  constructor(private messageService: MessageService,private service: ApiService, private router: Router) {
+  }
+
+
+  ngOnInit() {
+    this.service = new ApiService();
+    this.getModules(this.service)
+
     this.messageService.getFlag().subscribe(message => {
-      this.openNav()
+      if(message.open === true)
+      {
+        this.openNav()
+      }
     });
   }
+
+
+  async getModules(service: ApiService) {
+    let user = JSON.parse(localStorage.getItem('user') || '{}');
+    var params = {
+      session: user.id,
+      filter: "default"
+    }
+    this.modules = JSON.parse(await service.CALL(params, "get_available_modules"));
+    this.modules = (this.modules.modules)
+    return this.modules;
+  }
+
 
   openNav() {
     var sidebar = window.document.getElementById('mySidebar');
@@ -60,6 +90,8 @@ export class DashboardSidebarComponent {
       sidebar.style.width = "250px";
     }
   }
+
+
   closeNav() {
     var sidebar = window.document.getElementById('mySidebar');
     if (sidebar === null) {
@@ -68,4 +100,8 @@ export class DashboardSidebarComponent {
       sidebar.style.marginLeft = "0";
     }
   }
+
 }
+
+
+
