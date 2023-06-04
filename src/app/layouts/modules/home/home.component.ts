@@ -20,7 +20,7 @@ export class HomeComponent {
 
     var params = {
       session: user.id,
-      filter: "all"
+      filter: "default"
     }
     await service.CALL(params, "get_available_modules");
   }

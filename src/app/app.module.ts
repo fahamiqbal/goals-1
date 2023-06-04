@@ -12,6 +12,7 @@ import { HomeComponent } from './layouts/modules/home/home.component';
 import { DashboardComponent } from './layouts/modules/dashboard/dashboard.component';
 import { DashboardNavbarComponent } from './components/dashboard-navbar/dashboard-navbar.component';
 import {FontAwesomeModule} from "@fortawesome/angular-fontawesome";
+import { DashboardSidebarComponent } from './components/dashboard-sidebar/dashboard-sidebar.component';
 
 
 
@@ -24,14 +25,15 @@ import {FontAwesomeModule} from "@fortawesome/angular-fontawesome";
     RegisterComponent,
     HomeComponent,
     DashboardComponent,
-    DashboardNavbarComponent
+    DashboardNavbarComponent,
+    DashboardSidebarComponent
   ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    ReactiveFormsModule,
-    FontAwesomeModule,
-  ],
+    imports: [
+        BrowserModule,
+        AppRoutingModule,
+        ReactiveFormsModule,
+        FontAwesomeModule,
+    ],
   providers: [],
   bootstrap: [AppComponent]
 })
