@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import {faAddressBook} from "@fortawesome/free-solid-svg-icons";
 import {faUser} from "@fortawesome/free-solid-svg-icons/faUser";
 import {faPeopleGroup} from "@fortawesome/free-solid-svg-icons";
+import {MessageService} from "../../core/message-service/message.service";
 
 
 @Component({
@@ -46,17 +47,19 @@ export class DashboardSidebarComponent {
 
   }
 
+  constructor(private messageService: MessageService) {
+    this.messageService.getFlag().subscribe(message => {
+      this.openNav()
+    });
+  }
 
   openNav() {
     var sidebar = window.document.getElementById('mySidebar');
     if (sidebar === null) {
     } else {
       sidebar.style.width = "250px";
-      sidebar.style.marginLeft = "250px";
     }
   }
-
-  /* Set the width of the sidebar to 0 and the left margin of the page content to 0 */
   closeNav() {
     var sidebar = window.document.getElementById('mySidebar');
     if (sidebar === null) {
