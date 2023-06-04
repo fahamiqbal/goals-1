@@ -46,16 +46,23 @@ export class DashboardSidebarComponent {
 
   }
 
-  constructor() {
-    // Initialization for ES Users
-    // import {
-    //   Sidenav,
-    //   Ripple,
-    //   initTE,
-    // } from "tw-elements";
-    //
-    // initTE({ Sidenav, Ripple });
+
+  openNav() {
+    var sidebar = window.document.getElementById('mySidebar');
+    if (sidebar === null) {
+    } else {
+      sidebar.style.width = "250px";
+      sidebar.style.marginLeft = "250px";
+    }
   }
 
-  protected readonly faUser = faUser;
+  /* Set the width of the sidebar to 0 and the left margin of the page content to 0 */
+  closeNav() {
+    var sidebar = window.document.getElementById('mySidebar');
+    if (sidebar === null) {
+    } else {
+      sidebar.style.width = "0";
+      sidebar.style.marginLeft = "0";
+    }
+  }
 }
