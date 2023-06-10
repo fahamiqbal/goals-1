@@ -6,6 +6,7 @@ import {RegisterComponent} from "./layouts/auth/register/register.component";
 import {authGuard} from "./shared/guards/auth.guard";
 import {HomeComponent} from "./layouts/modules/home/home.component";
 import {DashboardComponent} from "./layouts/modules/dashboard/dashboard.component";
+import {ContactUsComponent} from "./layouts/modules/contact-us/contact-us.component";
 
 
 const routes: Routes = [
@@ -15,8 +16,8 @@ const routes: Routes = [
     component: AuthComponent,
     children: [
       { path: 'login', component: LoginComponent, canActivate: [authGuard],},
-      { path: 'register', component: RegisterComponent,},
-      { path: '', redirectTo: 'login', pathMatch: 'full' },
+      { path: 'register', component: RegisterComponent, canActivate: [authGuard],},
+      // { path: '', redirectTo: 'login', pathMatch: 'full' },
     ],
   },
   {
@@ -24,7 +25,8 @@ const routes: Routes = [
     component: DashboardComponent,
     children: [
       { path: 'home', component: HomeComponent},
-      { path: '', redirectTo: 'login', pathMatch: 'full' },
+      { path: 'contact-us', component: ContactUsComponent},
+      // { path: '', redirectTo: 'login', pathMatch: 'full' },
     ],
   },
 ];

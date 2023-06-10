@@ -23,4 +23,19 @@ export class ApiService {
         return error;
       });
   }
+
+  SyncCALL(params:any,method:any): any {
+    var config = {
+      method: 'get',
+      param: params,
+      url: '/api?'+'method='+method+'&input_type=JSON&response_type=JSON&rest_data='+ JSON.stringify(params),
+    };
+    return axios.get<any>(config.url)
+      .then((response) => {
+        return JSON.stringify(response.data);
+      })
+      .catch((error) => {
+        return error;
+      });
+  }
 }

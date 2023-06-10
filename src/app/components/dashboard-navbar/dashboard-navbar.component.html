@@ -12,9 +12,9 @@
     </a>
     <!-- Nav Links -->
     <ul class="hidden md:flex px-4 mx-auto font-semibold font-heading space-x-12">
-      <li><a class="hover:text-gray-200" href="#">Home</a></li>
+      <li><a class="hover:text-gray-200" routerLink="/dashboard/home">Home</a></li>
       <li><a class="hover:text-gray-200 cursor-pointer"  (click)="openSideNav()">Modules</a></li>
-      <li><a class="hover:text-gray-200" href="#">Contact Us</a></li>
+      <li><a class="hover:text-gray-200" routerLink="/dashboard/contact-us">Contact Us</a></li>
     </ul>
     <!-- Header Icons -->
     <div class="hidden xl:flex items-center space-x-5 items-center">
@@ -76,7 +76,7 @@
           </a>
         </li>
         <li>
-          <a href="#" class="flex px-4 py-3 hover:bg-palleteO3 text-palleteG1 hover:text-white">
+          <a (click)="logout()" class="flex px-4 py-3 hover:bg-palleteO3 text-palleteG1 hover:text-white">
             <fa-icon  [icon]="signOut" [styles]="{'stroke': 'red', 'color': 'black'}" size="lg"></fa-icon>
             Log Out
           </a>

@@ -19,7 +19,6 @@ export class LoginComponent {
   constructor(private formBuilder: FormBuilder,private service:ApiService,private router: Router) {}
 
   async onSubmit() {
-    console.log(this.loginForm.controls['email'].value);
     var params = {
       user_auth: {
         user_name: this.loginForm.controls['email'].value,

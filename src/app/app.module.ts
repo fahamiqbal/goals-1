@@ -14,6 +14,7 @@ import { DashboardNavbarComponent } from './components/dashboard-navbar/dashboar
 import {FontAwesomeModule} from "@fortawesome/angular-fontawesome";
 import { DashboardSidebarComponent } from './components/dashboard-sidebar/dashboard-sidebar.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ContactUsComponent } from './layouts/modules/contact-us/contact-us.component';
 
 
 
@@ -27,7 +28,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     HomeComponent,
     DashboardComponent,
     DashboardNavbarComponent,
-    DashboardSidebarComponent
+    DashboardSidebarComponent,
+    ContactUsComponent
   ],
     imports: [
         BrowserModule,
