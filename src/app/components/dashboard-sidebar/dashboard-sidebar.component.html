@@ -1,26 +1,3 @@
-<!--<div class="fixed top-0 left-0 h-screen w-24 flex flex-col-->
-<!--                  bg-gray-900 dark:bg-gray-900 shadow-lg group:hover:scale-200" xmlns="http://www.w3.org/1999/html">-->
-
-<!--&lt;!&ndash;  <fa-icon icon="test"></fa-icon>&ndash;&gt;-->
-<!--  <div>-->
-<!--    <div class="sidebar-icon group" >-->
-<!--      <fa-icon  [icon]="icons.Accounts"  size="3x"></fa-icon>-->
-<!--    </div>-->
-<!--    <span>Leads</span>-->
-
-<!--  </div>-->
-<!--    <div class="sidebar-icon group">-->
-<!--      <fa-icon  [icon]="icons.Accounts"  size="3x"></fa-icon>-->
-<!--    </div>-->
-<!--    <div class="sidebar-icon group" >-->
-<!--      <fa-icon  [icon]="icons.Accounts"  size="3x"></fa-icon>-->
-<!--    </div>-->
-
-
-<!--</div>-->
-
-
-
 
 
 <div id="mySidebar" class="sidebar">
@@ -28,9 +5,106 @@
 
 
   <a href="#" class="group" *ngFor="let module of modules">
-        <div class="sidebar-icon group-hover:rounded-xl  group-hover:bg-palleteO3" >
+
+        <div *ngIf="module.module_key === 'Home'" class="sidebar-icon group-hover:rounded-xl  group-hover:bg-palleteO3" >
+          <fa-icon  [icon]="icons['Home']"  size="2x"></fa-icon>
+        </div>
+        <div *ngIf="module.module_key === 'Accounts'" class="sidebar-icon group-hover:rounded-xl  group-hover:bg-palleteO3" >
           <fa-icon  [icon]="icons['Accounts']"  size="2x"></fa-icon>
         </div>
+        <div *ngIf="module.module_key === 'Contacts'" class="sidebar-icon group-hover:rounded-xl  group-hover:bg-palleteO3" >
+          <fa-icon  [icon]="icons['Contacts']"  size="2x"></fa-icon>
+        </div>
+        <div *ngIf="module.module_key === 'Opportunities'" class="sidebar-icon group-hover:rounded-xl  group-hover:bg-palleteO3" >
+          <fa-icon  [icon]="icons['Opportunities']"  size="2x"></fa-icon>
+        </div>
+        <div *ngIf="module.module_key === 'Leads'" class="sidebar-icon group-hover:rounded-xl  group-hover:bg-palleteO3" >
+          <fa-icon  [icon]="icons['Leads']"  size="2x"></fa-icon>
+        </div>
+        <div *ngIf="module.module_key === 'AOS_Quotes'" class="sidebar-icon group-hover:rounded-xl  group-hover:bg-palleteO3" >
+          <fa-icon  [icon]="icons['AOS_Quotes']"  size="2x"></fa-icon>
+        </div>
+        <div *ngIf="module.module_key === 'Calendar'" class="sidebar-icon group-hover:rounded-xl  group-hover:bg-palleteO3" >
+          <fa-icon  [icon]="icons['Calendar']"  size="2x"></fa-icon>
+        </div>
+        <div *ngIf="module.module_key === 'Documents'" class="sidebar-icon group-hover:rounded-xl  group-hover:bg-palleteO3" >
+          <fa-icon  [icon]="icons['Documents']"  size="2x"></fa-icon>
+        </div>
+        <div *ngIf="module.module_key === 'Emails'" class="sidebar-icon group-hover:rounded-xl  group-hover:bg-palleteO3" >
+          <fa-icon  [icon]="icons['Emails']"  size="2x"></fa-icon>
+        </div>
+        <div *ngIf="module.module_key === 'Spots'" class="sidebar-icon group-hover:rounded-xl  group-hover:bg-palleteO3" >
+          <fa-icon  [icon]="icons['Spots']"  size="2x"></fa-icon>
+        </div>
+        <div *ngIf="module.module_key === 'Campaigns'" class="sidebar-icon group-hover:rounded-xl  group-hover:bg-palleteO3" >
+          <fa-icon  [icon]="icons['Campaigns']"  size="2x"></fa-icon>
+        </div>
+        <div *ngIf="module.module_key === 'Calls'" class="sidebar-icon group-hover:rounded-xl  group-hover:bg-palleteO3" >
+          <fa-icon  [icon]="icons['Calls']"  size="2x"></fa-icon>
+        </div>
+        <div *ngIf="module.module_key === 'Meetings'" class="sidebar-icon group-hover:rounded-xl  group-hover:bg-palleteO3" >
+          <fa-icon  [icon]="icons['Meetings']"  size="2x"></fa-icon>
+        </div>
+        <div *ngIf="module.module_key === 'Tasks'" class="sidebar-icon group-hover:rounded-xl  group-hover:bg-palleteO3" >
+          <fa-icon  [icon]="icons['Tasks']"  size="2x"></fa-icon>
+        </div>
+        <div *ngIf="module.module_key === 'Notes'" class="sidebar-icon group-hover:rounded-xl  group-hover:bg-palleteO3" >
+          <fa-icon  [icon]="icons['Notes']"  size="2x"></fa-icon>
+        </div>
+        <div *ngIf="module.module_key === 'AOS_Invoices'" class="sidebar-icon group-hover:rounded-xl  group-hover:bg-palleteO3" >
+          <fa-icon  [icon]="icons['AOS_Invoices']"  size="2x"></fa-icon>
+        </div>
+        <div *ngIf="module.module_key === 'AOS_Contracts'" class="sidebar-icon group-hover:rounded-xl  group-hover:bg-palleteO3" >
+          <fa-icon  [icon]="icons['AOS_Contracts']"  size="2x"></fa-icon>
+        </div>
+        <div *ngIf="module.module_key === 'Cases'" class="sidebar-icon group-hover:rounded-xl  group-hover:bg-palleteO3" >
+          <fa-icon  [icon]="icons['Cases']"  size="2x"></fa-icon>
+        </div>
+        <div *ngIf="module.module_key === 'Prospects'" class="sidebar-icon group-hover:rounded-xl  group-hover:bg-palleteO3" >
+          <fa-icon  [icon]="icons['Prospects']"  size="2x"></fa-icon>
+        </div>
+        <div *ngIf="module.module_key === 'ProspectLists'" class="sidebar-icon group-hover:rounded-xl  group-hover:bg-palleteO3" >
+          <fa-icon  [icon]="icons['ProspectLists']"  size="2x"></fa-icon>
+        </div>
+        <div *ngIf="module.module_key === 'Project'" class="sidebar-icon group-hover:rounded-xl  group-hover:bg-palleteO3" >
+          <fa-icon  [icon]="icons['Project']"  size="2x"></fa-icon>
+        </div>
+        <div *ngIf="module.module_key === 'AM_ProjectTemplates'" class="sidebar-icon group-hover:rounded-xl  group-hover:bg-palleteO3" >
+          <fa-icon  [icon]="icons['AM_ProjectTemplates']"  size="2x"></fa-icon>
+        </div>
+        <div *ngIf="module.module_key === 'FP_events'" class="sidebar-icon group-hover:rounded-xl  group-hover:bg-palleteO3" >
+          <fa-icon  [icon]="icons['FP_events']"  size="2x"></fa-icon>
+        </div>
+        <div *ngIf="module.module_key === 'FP_Event_Locations'" class="sidebar-icon group-hover:rounded-xl  group-hover:bg-palleteO3" >
+          <fa-icon  [icon]="icons['FP_Event_Locations']"  size="2x"></fa-icon>
+        </div>
+        <div *ngIf="module.module_key === 'AOS_Products'" class="sidebar-icon group-hover:rounded-xl  group-hover:bg-palleteO3" >
+          <fa-icon  [icon]="icons['AOS_Products']"  size="2x"></fa-icon>
+        </div>
+        <div *ngIf="module.module_key === 'AOS_Product_Categories'" class="sidebar-icon group-hover:rounded-xl  group-hover:bg-palleteO3" >
+          <fa-icon  [icon]="icons['AOS_Product_Categories']"  size="2x"></fa-icon>
+        </div>
+        <div *ngIf="module.module_key === 'AOS_PDF_Templates'" class="sidebar-icon group-hover:rounded-xl  group-hover:bg-palleteO3" >
+          <fa-icon  [icon]="icons['AOS_PDF_Templates']"  size="2x"></fa-icon>
+        </div>
+        <div *ngIf="module.module_key === 'AOR_Reports'" class="sidebar-icon group-hover:rounded-xl  group-hover:bg-palleteO3" >
+          <fa-icon  [icon]="icons['AOR_Reports']"  size="2x"></fa-icon>
+        </div>
+        <div *ngIf="module.module_key === 'AOK_KnowledgeBase'" class="sidebar-icon group-hover:rounded-xl  group-hover:bg-palleteO3" >
+          <fa-icon  [icon]="icons['AOK_KnowledgeBase']"  size="2x"></fa-icon>
+        </div>
+        <div *ngIf="module.module_key === 'AOK_Knowledge_Base_Categories'" class="sidebar-icon group-hover:rounded-xl  group-hover:bg-palleteO3" >
+          <fa-icon  [icon]="icons['AOK_Knowledge_Base_Categories']"  size="2x"></fa-icon>
+        </div>
+        <div *ngIf="module.module_key === 'EmailTemplates'" class="sidebar-icon group-hover:rounded-xl  group-hover:bg-palleteO3" >
+          <fa-icon  [icon]="icons['EmailTemplates']"  size="2x"></fa-icon>
+        </div>
+        <div *ngIf="module.module_key === 'Surveys'" class="sidebar-icon group-hover:rounded-xl  group-hover:bg-palleteO3" >
+          <fa-icon  [icon]="icons['Surveys']"  size="2x"></fa-icon>
+        </div>
+
+
+
         <div class="sidebar-text group-hover:rounded-xl group-hover:bg-palleteO3" >
           <span class="m-3" class="{{module.module_key}}">{{module.module_label}}</span>
         </div>

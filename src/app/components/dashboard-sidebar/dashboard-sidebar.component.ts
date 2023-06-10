@@ -1,7 +1,12 @@
 import {Component, OnInit} from '@angular/core';
-import {faAddressBook} from "@fortawesome/free-solid-svg-icons";
-import {faUser} from "@fortawesome/free-solid-svg-icons/faUser";
-import {faPeopleGroup} from "@fortawesome/free-solid-svg-icons";
+import {
+  faAddressBook, faCalendar, faFileInvoice, faFolderOpen, faHandPointUp, faHandshakeSimple,
+  faHeadset,
+  faHouse, faInbox, faLightbulb, faNoteSticky,
+  faShieldHalved, faSquarePhone,
+  faSterlingSign, faTasks,
+  faTrophy, faPeopleGroup, faFileContract, faSuitcase
+} from "@fortawesome/free-solid-svg-icons";
 import {MessageService} from "../../core/message-service/message.service";
 import {ApiService} from "../../core/crm-api/api.service";
 import {Router} from "@angular/router";
@@ -18,27 +23,27 @@ export class DashboardSidebarComponent implements OnInit{
 
 
    icons = {
-    Home : faPeopleGroup,
-    Accounts : faPeopleGroup,
-    Contacts : faPeopleGroup,
-    Opportunities : faPeopleGroup,
-    Leads : faPeopleGroup,
-    Quotes : faPeopleGroup,
-    Calendar : faPeopleGroup,
-    Documents : faPeopleGroup,
-    Emails : faPeopleGroup,
-    Spots : faPeopleGroup,
-    Campaigns : faPeopleGroup,
-    Calls : faPeopleGroup,
-    Meetings : faPeopleGroup,
-    Tasks : faPeopleGroup,
-    Notes : faPeopleGroup,
-    AOS_Invoices : faPeopleGroup,
-    AOS_Contracts : faPeopleGroup,
-    Cases : faPeopleGroup,
+    Home : faHouse,
+    Accounts : faShieldHalved,
+    Contacts : faAddressBook,
+    Opportunities : faTrophy,
+    Leads : faHeadset,
+     AOS_Quotes : faSterlingSign,
+    Calendar : faCalendar,
+    Documents : faFolderOpen,
+    Emails : faInbox,
+    Spots : faHandPointUp,
+    Campaigns : faLightbulb,
+    Calls : faSquarePhone,
+    Meetings : faHandshakeSimple,
+    Tasks : faTasks,
+    Notes : faNoteSticky,
+    AOS_Invoices : faFileInvoice,
+    AOS_Contracts : faFileContract,
+    Cases : faSuitcase,
     Prospects : faPeopleGroup,
     ProspectLists : faPeopleGroup,
-    Projects : faPeopleGroup,
+    Project : faPeopleGroup,
     AM_ProjectTemplates : faPeopleGroup,
     FP_events : faPeopleGroup,
     FP_Event_Locations : faPeopleGroup,
@@ -50,7 +55,6 @@ export class DashboardSidebarComponent implements OnInit{
     AOK_Knowledge_Base_Categories : faPeopleGroup,
     EmailTemplates : faPeopleGroup,
     Surveys : faPeopleGroup,
-
   }
   modules:any= null;
 
@@ -79,6 +83,7 @@ export class DashboardSidebarComponent implements OnInit{
     }
     this.modules = JSON.parse(await service.CALL(params, "get_available_modules"));
     this.modules = (this.modules.modules)
+    console.log(this.modules)
     return this.modules;
   }
 
