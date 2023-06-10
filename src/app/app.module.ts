@@ -110,7 +110,9 @@ import { SurveysListViewComponent } from './layouts/modules/Surveys/surveys-list
 import { SurveysDetailViewComponent } from './layouts/modules/Surveys/surveys-detail-view/surveys-detail-view.component';
 import { SurveysEditViewComponent } from './layouts/modules/Surveys/surveys-edit-view/surveys-edit-view.component';
 import { HomeListViewComponent } from './layouts/modules/Home/home-list-view/home-list-view.component';
-
+import { MatTableModule } from '@angular/material/table';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { TableComponent } from './components/table/table.component';
 
 
 @NgModule({
@@ -219,7 +221,8 @@ import { HomeListViewComponent } from './layouts/modules/Home/home-list-view/hom
     SurveysListViewComponent,
     SurveysDetailViewComponent,
     SurveysEditViewComponent,
-    HomeListViewComponent
+    HomeListViewComponent,
+    TableComponent
   ],
     imports: [
         BrowserModule,
@@ -227,6 +230,8 @@ import { HomeListViewComponent } from './layouts/modules/Home/home-list-view/hom
         ReactiveFormsModule,
         FontAwesomeModule,
         BrowserAnimationsModule,
+      MatTableModule,
+      MatPaginatorModule
     ],
   providers: [],
   bootstrap: [AppComponent]
