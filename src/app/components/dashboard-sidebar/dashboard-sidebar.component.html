@@ -4,7 +4,7 @@
   <a href="javascript:void(0)" class="closebtn mt-3" (click)="closeNav()">&times;</a>
 
 
-  <a href="#" class="group" *ngFor="let module of modules">
+  <a href="#" class="group" *ngFor="let module of modules" routerLink="/dashboard/{{module.module_key}}">
 
         <div *ngIf="module.module_key === 'Home'" class="sidebar-icon group-hover:rounded-xl  group-hover:bg-palleteO3" >
           <fa-icon  [icon]="icons['Home']"  size="2x"></fa-icon>

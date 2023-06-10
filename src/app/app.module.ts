@@ -109,6 +109,7 @@ import { EmailTemplatesEditViewComponent } from './layouts/modules/EmailTemplate
 import { SurveysListViewComponent } from './layouts/modules/Surveys/surveys-list-view/surveys-list-view.component';
 import { SurveysDetailViewComponent } from './layouts/modules/Surveys/surveys-detail-view/surveys-detail-view.component';
 import { SurveysEditViewComponent } from './layouts/modules/Surveys/surveys-edit-view/surveys-edit-view.component';
+import { HomeListViewComponent } from './layouts/modules/Home/home-list-view/home-list-view.component';
 
 
 
@@ -217,7 +218,8 @@ import { SurveysEditViewComponent } from './layouts/modules/Surveys/surveys-edit
     EmailTemplatesEditViewComponent,
     SurveysListViewComponent,
     SurveysDetailViewComponent,
-    SurveysEditViewComponent
+    SurveysEditViewComponent,
+    HomeListViewComponent
   ],
     imports: [
         BrowserModule,

@@ -10,7 +10,7 @@ export const authGuard: CanActivateFn = async (route, state) => {
     //   session: user.id
     // };
     // return await service.CALL(params, 'seamless_login') === 1 ? true: false;
-    router.navigate(['/dashboard/home']);
+    router.navigate(['/dashboard/Home']);
     return false;
   }
   // router.navigate(['auth/register']);

@@ -36,7 +36,7 @@ export class LoginComponent {
     if(res.id)
     {
       localStorage.setItem('user',JSON.stringify(res));
-      this.router.navigate(['/dashboard/home']);
+      this.router.navigate(['/dashboard/Home']);
     }
     else
     {
