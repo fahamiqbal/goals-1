@@ -83,7 +83,6 @@ export class DashboardSidebarComponent implements OnInit{
     }
     this.modules = JSON.parse(await service.CALL(params, "get_available_modules"));
     this.modules = (this.modules.modules)
-    console.log(this.modules)
     return this.modules;
   }
 

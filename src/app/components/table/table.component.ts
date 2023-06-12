@@ -4,6 +4,7 @@ import { MatPaginator, PageEvent } from '@angular/material/paginator';
 import { merge } from 'rxjs';
 import { tap } from 'rxjs/operators';
 import {ApiService} from "../../core/crm-api/api.service";
+import {MatTableDataSource} from "@angular/material/table";
 
 @Component({
   selector: 'app-table',
@@ -15,22 +16,21 @@ export class TableComponent implements AfterContentInit {
   @Input() module_name = '';
   @ViewChild(MatPaginator) paginator!: MatPaginator;
 
-  displayedColumns: string[] = ['name', 'description'];
-  dataSource: any[] = [] ;
+  displayedColumns: string[] = ['Name', 'City', 'Phone', 'Date Created', 'Email'];
+  // @ts-ignore
+  dataSource: MatTableDataSource<any>;
+  jsonData:any;
   pageIndex = 0;
   pageSize = 10;
   totalItems = 0;
+  // Example JSON data
+
   constructor(private apiService: ApiService) {
   }
 
   ngAfterContentInit() {
-    setTimeout(() => {
-      this.paginator.page
-        .pipe(
-          tap(() => this.getEntries(this.apiService))
-        )
-        .subscribe();
-    });
+    this.getEntries();
+
   }
 
 
@@ -40,14 +40,21 @@ export class TableComponent implements AfterContentInit {
     this.loadData();
   }
 
-  async getEntries(service: ApiService) {
+  getEntries() {
     let user = JSON.parse(localStorage.getItem('user') || '{}');
     var params = {
       session:user.id,
       module_name:"Accounts",
     }
-    var data = JSON.parse(await service.CALL(params, "get_entry_list"));
-    this.dataSource = data;
+    this.apiService.CALL(params, "get_entry_list").then((jsonData:any) => {
+      var data = JSON.parse(jsonData).entry_list
+      console.log(data)
+      this.jsonData = data;
+      this.dataSource = new MatTableDataSource(this.jsonData);
+      this.dataSource.paginator = this.paginator;
+    }).catch((error) => {
+      console.error('Error fetching JSON data:', error);
+    });
   }
 
   loadData() {
@@ -65,8 +72,5 @@ export class TableComponent implements AfterContentInit {
             console.log(response)
         });
     }
-
-
-
   }
 }
