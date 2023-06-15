@@ -5,6 +5,7 @@ import { merge } from 'rxjs';
 import { tap } from 'rxjs/operators';
 import {ApiService} from "../../core/crm-api/api.service";
 import {MatTableDataSource} from "@angular/material/table";
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-table',
@@ -25,12 +26,16 @@ export class TableComponent implements AfterContentInit {
   totalItems = 0;
   // Example JSON data
 
-  constructor(private apiService: ApiService) {
+  constructor(private apiService: ApiService,private router:Router) {
   }
 
   ngAfterContentInit() {
     this.getEntries();
 
+  }
+
+  redirectToDetails(id: string) {
+    this.router.navigate(['/dashboard/AccountsDetailView/', id]);
   }
 
 

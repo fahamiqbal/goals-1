@@ -70,6 +70,7 @@ import {
   AOKKnowledgeBaseCategoriesListViewComponent
 } from "./layouts/modules/AOK_Knowledge_Base_Categories/aok-knowledge-base-categories-list-view/aok-knowledge-base-categories-list-view.component";
 import {HomeListViewComponent} from "./layouts/modules/Home/home-list-view/home-list-view.component";
+import { AccountsDetailViewComponent } from './layouts/modules/Accounts/accounts-detail-view/accounts-detail-view.component';
 
 
 const routes: Routes = [
@@ -89,8 +90,10 @@ const routes: Routes = [
     children: [
       { path: 'home', component: HomeComponent},
       { path: 'contact-us', component: ContactUsComponent},
-
+      
       {path: 'Home', component: HomeListViewComponent},
+      {path: 'AccountsDetailView/:id', component: AccountsDetailViewComponent},
+
       {path: 'Accounts', component: AccountsListViewComponent},
       {path: 'Contacts', component: ContactsListViewComponent},
       {path: 'Opportunities', component: OpportunitiesListViewComponent},
