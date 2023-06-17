@@ -12,6 +12,7 @@ module.exports = {
         'palleteO3': '#F27141',
         'palleteG1': '#252640',
         'palleteG2': '#0D0D0D',
+        'palleteG3': '#3E3E3E',
       },
       spacing: {
         '104': '32rem',
