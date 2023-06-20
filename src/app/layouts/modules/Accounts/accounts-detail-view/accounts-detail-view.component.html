@@ -28,7 +28,7 @@
             
             <div class="backdrop-blur-md bg-white/30 mx-20 my-10 p-10">
 
-                <form action="#" method="POST" class="mx-auto mt-8  mb-8 max-w-4xl sm:mt-8" [formGroup]="myForm">
+                <form action="#" method="POST" class="mx-auto mt-8  mb-8 max-w-4xl sm:mt-8" [formGroup]="myForm" *ngIf="myForm"> 
                     <div class="flex justify-end">
                         <div class="ml-auto"  *ngIf="!isEditable" >
                           <a class="btn1" (click)="makeEditable()" >Edit</a>
@@ -43,31 +43,31 @@
                         <div>
                             <label for="first-name" class="block text-sm font-semibold leading-6 text-gray-900">Name</label>
                             <div class="mt-2.5">
-                                <input type="text" name="first-name" [readonly]="!isEditable"  id="first-name" autocomplete="given-name" class="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
+                                <input type="text" name="name" [readonly]="!isEditable" formControlName="name"   id="name" class="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
                             </div>
                         </div>
                         <div>
                             <label for="last-name" class="block text-sm font-semibold leading-6 text-gray-900">Office Phone</label>
                             <div class="mt-2.5">
-                                <input type="text" name="last-name" [readonly]="!isEditable" id="last-name" autocomplete="family-name" class="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
+                                <input type="text" name="phone_office" [readonly]="!isEditable" formControlName="phone_office" id="phone_office" class="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
                             </div>
                         </div>
                         <div>
                             <label for="last-name" class="block text-sm font-semibold leading-6 text-gray-900">Website</label>
                             <div class="mt-2.5">
-                                <input type="text" name="last-name" [readonly]="!isEditable" id="last-name" autocomplete="family-name" class="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
+                                <input type="text" name="website" [readonly]="!isEditable" id="website" formControlName="website" class="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
                             </div>
                         </div>
                         <div>
                             <label for="first-name" class="block text-sm font-semibold leading-6 text-gray-900">Fax</label>
                             <div class="mt-2.5">
-                                <input type="text" name="first-name" [readonly]="!isEditable" id="first-name" autocomplete="given-name" class="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
+                                <input type="text" name="phone_fax" [readonly]="!isEditable" formControlName="phone_fax" id="phone_fax" class="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
                             </div>
                         </div>
                         <div class="sm:col-span-2">
-                            <label for="company" class="block text-sm font-semibold leading-6 text-gray-900">Email Address</label>
+                            <label for="email1" class="block text-sm font-semibold leading-6 text-gray-900">Email Address</label>
                             <div class="mt-2.5">
-                                <input type="text" name="company" id="company" [readonly]="!isEditable" autocomplete="organization" class="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
+                                <input type="text" name="email1" id="email1" [readonly]="!isEditable" formControlName="email1" class="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
                             </div>
                         </div>
         
@@ -75,26 +75,29 @@
                         <div class="sm:col-span-2">
                         <label for="message" class="block text-sm font-semibold leading-6 text-gray-900">Billing Address</label>
                         <div class="mt-2.5">
-                            <textarea name="message" id="message" rows="4"  [readonly]="!isEditable" class="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"></textarea>
+                            <textarea name="message" id="message" rows="4"  [readonly]="!isEditable" class="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
+                                {{ myForm.get('billing_address_street')?.value }} {{ myForm.get('billing_address_state')?.value }} {{ myForm.get('billing_address_city')?.value }} {{ myForm.get('billing_address_country')?.value }}
+                            </textarea>
                         </div>
                         </div> 
         
                         <div class="sm:col-span-2">
                         <label for="message" class="block text-sm font-semibold leading-6 text-gray-900">Shipping Address</label>
                         <div class="mt-2.5">
-                            <textarea name="message" id="message" rows="4"  [readonly]="!isEditable" class="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"></textarea>
+                            <textarea name="message" id="message" rows="4"  [readonly]="!isEditable" class="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
+                                {{ myForm.get('shipping_address_street')?.value }} {{ myForm.get('shipping_address_state')?.value }} {{ myForm.get('shipping_address_city')?.value }} {{ myForm.get('shipping_address_country')?.value }}
+                            </textarea>
                         </div>
                         </div>
                         <div>
                             <label for="first-name" class="block text-sm font-semibold leading-6 text-gray-900">Desrcription</label>
-                            <div class="mt-2.5">
-                                <input type="text" name="first-name" [readonly]="!isEditable"  id="first-name" autocomplete="given-name" class="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
-                            </div>
+                            <textarea name="message" id="message" rows="4" formControlName="description" [readonly]="!isEditable" class="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
+                            </textarea>
                         </div>
                         <div>
                             <label for="last-name" class="block text-sm font-semibold leading-6 text-gray-900">Assigned To</label>
                             <div class="mt-2.5">
-                                <input type="text" name="last-name" [readonly]="!isEditable" id="last-name" autocomplete="family-name" class="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
+                                <input type="text" name="assigned_user_name" [readonly]="!isEditable" formControlName="assigned_user_name" id="assigned_user_name" class="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
                             </div>
                         </div>
                     </div>
@@ -111,7 +114,7 @@
         <div class="isolate bg-white px-6 py-14 sm:py-8 lg:px-8 bg-gradient-to-r from-palleteO3  to-palleteG1 min-h-screen">
             <div class="backdrop-blur-md bg-white/30 mx-20 my-10 p-10">
 
-                <form action="#" method="POST" class="mx-auto mt-8 mb-8  max-w-4xl sm:mt-8" [formGroup]="myForm">
+                <form action="#" method="POST" [formGroup]="myForm" *ngIf="myForm" class="mx-auto mt-8 mb-8  max-w-4xl sm:mt-8">
                     <div class="flex justify-end">
                         <div class="ml-auto"  *ngIf="!isEditable" >
                           <a class="btn1" (click)="makeEditable()" >Edit</a>
@@ -122,44 +125,41 @@
                     </div>
                     <div class="grid grid-cols-1 gap-x-8 gap-y-6 sm:grid-cols-2">
                         <div>
-                            <label for="first-name" class="block text-sm font-semibold leading-6 text-gray-900">Type</label>
+                            <label for="account_type" class="block text-sm font-semibold leading-6 text-gray-900">Type</label>
                             <div class="mt-2.5">
-                                <input type="text" name="first-name" [readonly]="!isEditable"  id="first-name" autocomplete="given-name" class="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
+                                <input type="text" name="account_type" [readonly]="!isEditable" formControlName="account_type"  id="account_type" class="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
                             </div>
                         </div>
                         <div>
-                            <label for="last-name" class="block text-sm font-semibold leading-6 text-gray-900">Industry</label>
+                            <label for="industry" class="block text-sm font-semibold leading-6 text-gray-900">Industry</label>
                             <div class="mt-2.5">
-                                <input type="text" name="last-name" [readonly]="!isEditable" id="last-name" autocomplete="family-name" class="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
+                                <input type="text" name="industry" [readonly]="!isEditable" formControlName="industry" id="industry" class="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
                             </div>
                         </div>
                         <div>
-                            <label for="first-name" class="block text-sm font-semibold leading-6 text-gray-900">Annual Revenue</label>
+                            <label for="annual_revenue" class="block text-sm font-semibold leading-6 text-gray-900">Annual Revenue</label>
                             <div class="mt-2.5">
-                                <input type="text" name="first-name" [readonly]="!isEditable"  id="first-name" autocomplete="given-name" class="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
+                                <input type="text" name="annual_revenue" [readonly]="!isEditable" formControlName="annual_revenue"  id="annual_revenue" class="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
                             </div>
                         </div>
                         <div>
                             <label for="last-name" class="block text-sm font-semibold leading-6 text-gray-900">Employee</label>
                             <div class="mt-2.5">
-                                <input type="text" name="last-name" [readonly]="!isEditable" id="last-name" autocomplete="family-name" class="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
+                                <input type="text" name="employees" [readonly]="!isEditable" formControlName="employees" id="employees" autocomplete="family-name" class="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
                             </div>
                         </div>
                         <div class="sm:col-span-2">
-                            <label for="company" class="block text-sm font-semibold leading-6 text-gray-900">Member Of</label>
+                            <label for="parent_name" class="block text-sm font-semibold leading-6 text-gray-900">Member Of</label>
                             <div class="mt-2.5">
-                                <input type="text" name="company" id="company" [readonly]="!isEditable" autocomplete="organization" class="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
+                                <input type="text" name="parent_name" id="parent_name" formControlName="parent_name" [readonly]="!isEditable" autocomplete="organization" class="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
                             </div>
                         </div>
                         <div class="sm:col-span-2">
-                            <label for="company" class="block text-sm font-semibold leading-6 text-gray-900">Campaign</label>
+                            <label for="campaign_name" class="block text-sm font-semibold leading-6 text-gray-900">Campaign</label>
                             <div class="mt-2.5">
-                                <input type="text" name="company" id="company" [readonly]="!isEditable" autocomplete="organization" class="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
+                                <input type="text" name="campaign_name" id="campaign_name" formControlName="campaign_name" [readonly]="!isEditable" autocomplete="organization" class="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
                             </div>
                         </div>
-                        
-        
-                       
                         
                     </div>
                     </form>
@@ -177,7 +177,7 @@
 
             <div class="backdrop-blur-md bg-white/30 mx-20 my-10 p-10">
             
-                <form action="#" method="POST" class="mx-auto mt-8 mb-8 max-w-4xl sm:mt-8" [formGroup]="myForm">
+                <form action="#" method="POST" [formGroup]="myForm" *ngIf="myForm"  class="mx-auto mt-8 mb-8 max-w-4xl sm:mt-8">
                     <div class="flex justify-end">
                         <div class="ml-auto"  *ngIf="!isEditable" >
                           <a class="btn1" (click)="makeEditable()" >Edit</a>
@@ -188,15 +188,15 @@
                     </div>
                     <div class="grid grid-cols-1 gap-x-8 gap-y-6 sm:grid-cols-2">
                         <div>
-                            <label for="first-name" class="block text-sm font-semibold leading-6 text-gray-900">Date Created</label>
+                            <label for="date_entered" class="block text-sm font-semibold leading-6 text-gray-900">Date Created</label>
                             <div class="mt-2.5">
-                                <input type="text" name="first-name" [readonly]="!isEditable"  id="first-name" autocomplete="given-name" class="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
+                                <input type="text" name="date_entered" [readonly]="!isEditable" formControlName="date_entered"  id="date_entered" autocomplete="given-name" class="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
                             </div>
                         </div>
                         <div>
-                            <label for="last-name" class="block text-sm font-semibold leading-6 text-gray-900">Date Modified</label>
+                            <label for="date_modified" class="block text-sm font-semibold leading-6 text-gray-900">Date Modified</label>
                             <div class="mt-2.5">
-                                <input type="text" name="last-name" [readonly]="!isEditable" id="last-name" autocomplete="family-name" class="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
+                                <input type="text" name="date_modified" formControlName="date_modified" [readonly]="!isEditable" id="date_modified" autocomplete="family-name" class="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
                             </div>
                         </div>
                         

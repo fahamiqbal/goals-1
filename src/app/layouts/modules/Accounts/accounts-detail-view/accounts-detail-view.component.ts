@@ -27,8 +27,9 @@ export class AccountsDetailViewComponent implements OnInit, AfterContentInit {
       initTE({ Tab });
   }
 
-  ngAfterContentInit() {
-    this.getEntry();
+  async ngAfterContentInit() {
+
+     await this.getEntry();
   }
 
   getEntry() {
@@ -38,11 +39,20 @@ export class AccountsDetailViewComponent implements OnInit, AfterContentInit {
       module_name:"Accounts",
       id:this.id,
       select_fields:[],
+      link_name_to_fields_array:[],
     }
-    console.log(params)
     this.apiService.CALL(params, "get_entry").then((jsonData:any) => {
-      // var data = JSON.parse(jsonData)
-      console.log(jsonData)
+      var data = JSON.parse(jsonData)
+      if(data.entry_list[0].name_value_list)
+      {
+        jsonData = data.entry_list[0].name_value_list;
+        const formControlsConfig:any = {};
+        for (const key of Object.keys(jsonData)) {
+          formControlsConfig[key] = [jsonData[key].value];
+        }
+        this.myForm = this.formBuilder.group(formControlsConfig);
+        console.log(formControlsConfig)
+      }
     }).catch((error) => {
       console.warn('Error fetching JSON data:', error);
     });
@@ -56,9 +66,7 @@ export class AccountsDetailViewComponent implements OnInit, AfterContentInit {
     this.route.params.subscribe(params => {
       this.id = params['id'];
     });
-    this.myForm = this.formBuilder.group({
-
-    });
+    
 
   }
 

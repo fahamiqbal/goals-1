@@ -26,10 +26,10 @@ export class LoginComponent {
         encryption: 'PLAIN'
       },
       application_name: '',
-      name_value_list: {
-        name: 'notifyonsave',
-        value: 'true'
-      }
+      // name_value_list: {
+      //   name: 'notifyonsave',
+      //   value: 'true'
+      // }
     };
     var response = await this.service.CALL(params, 'login');
     var res = JSON.parse(response);
