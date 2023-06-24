@@ -1,6 +1,6 @@
 {
   "/api": {
-    "target": "http://localhost/suitecrm7/service/v4_1/rest.php",
+    "target": "http://3.142.200.107/service/v4_1/rest.php",
     "secure": false,
     "logLevel": "debug"
   }

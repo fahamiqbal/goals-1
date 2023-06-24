@@ -72,30 +72,81 @@
                         </div>
         
         
-                        <div class="sm:col-span-2">
-                        <label for="message" class="block text-sm font-semibold leading-6 text-gray-900">Billing Address</label>
-                        <div class="mt-2.5">
-                            <textarea name="message" id="message" rows="4"  [readonly]="!isEditable" class="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
-                                {{ myForm.get('billing_address_street')?.value }} {{ myForm.get('billing_address_state')?.value }} {{ myForm.get('billing_address_city')?.value }} {{ myForm.get('billing_address_country')?.value }}
-                            </textarea>
+                        <div class="sm:col-span-2" *ngIf="!isEditable">
+                            <label for="message" class="block text-sm font-semibold leading-6 text-gray-900">Billing Address</label>
+                            <div class="mt-2.5">
+                                <textarea name="message" id="message" rows="4"  [readonly]="!isEditable" class="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
+                                    {{ myForm.get('billing_address_street')?.value }} {{ myForm.get('billing_address_city')?.value }}  {{ myForm.get('billing_address_state')?.value }} {{ myForm.get('billing_address_country')?.value }}
+                                </textarea>
+                            </div>
                         </div>
-                        </div> 
+                        
+                            <div *ngIf="isEditable">
+                                <label for="billing_address_street" class="block text-sm font-semibold leading-6 text-gray-900">Billing Address Street</label>
+                                <div class="mt-2.5">
+                                    <input type="text" name="billing_address_street" [readonly]="!isEditable" formControlName="billing_address_street"   id="billing_address_street" class="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
+                                </div>
+                            </div>
+                            <div *ngIf="isEditable">
+                                <label for="billing_address_city" class="block text-sm font-semibold leading-6 text-gray-900">Billing Address City</label>
+                                <div class="mt-2.5">
+                                    <input type="text" name="billing_address_city" [readonly]="!isEditable" formControlName="billing_address_city" id="billing_address_city" class="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
+                                </div>
+                            </div>
+                            <div *ngIf="isEditable">
+                                <label for="billing_address_state" class="block text-sm font-semibold leading-6 text-gray-900">Billing Address State</label>
+                                <div class="mt-2.5">
+                                    <input type="text" name="billing_address_state" [readonly]="!isEditable" id="billing_address_state" formControlName="billing_address_state" class="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
+                                </div>
+                            </div>
+                            <div *ngIf="isEditable">
+                                <label for="billing_address_country" class="block text-sm font-semibold leading-6 text-gray-900">Billing Address Country</label>
+                                <div class="mt-2.5">
+                                    <input type="text" name="billing_address_country" [readonly]="!isEditable" formControlName="billing_address_country" id="billing_address_country" class="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
+                                </div>
+                            </div>
         
-                        <div class="sm:col-span-2">
-                        <label for="message" class="block text-sm font-semibold leading-6 text-gray-900">Shipping Address</label>
-                        <div class="mt-2.5">
-                            <textarea name="message" id="message" rows="4"  [readonly]="!isEditable" class="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
-                                {{ myForm.get('shipping_address_street')?.value }} {{ myForm.get('shipping_address_state')?.value }} {{ myForm.get('shipping_address_city')?.value }} {{ myForm.get('shipping_address_country')?.value }}
+                        <div class="sm:col-span-2" *ngIf="!isEditable">
+                            <label for="message" class="block text-sm font-semibold leading-6 text-gray-900">Shipping Address</label>
+                            <div class="mt-2.5">
+                                <textarea name="message" id="message" rows="4"  [readonly]="!isEditable" class="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
+                                    {{ myForm.get('shipping_address_street')?.value }} {{ myForm.get('shipping_address_city')?.value }} {{ myForm.get('shipping_address_state')?.value }} {{ myForm.get('shipping_address_country')?.value }}
+                                </textarea>
+                            </div>
+                        </div>
+
+                        <div *ngIf="isEditable">
+                            <label for="shipping_address_street" class="block text-sm font-semibold leading-6 text-gray-900">Shipping Address Street</label>
+                            <div class="mt-2.5">
+                                <input type="text" name="shipping_address_street" [readonly]="!isEditable" formControlName="shipping_address_street"   id="shipping_address_street" class="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
+                            </div>
+                        </div>
+                        <div *ngIf="isEditable">
+                            <label for="shipping_address_city" class="block text-sm font-semibold leading-6 text-gray-900">Shipping Address City</label>
+                            <div class="mt-2.5">
+                                <input type="text" name="shipping_address_city" [readonly]="!isEditable" formControlName="shipping_address_city" id="shipping_address_city" class="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
+                            </div>
+                        </div>
+                        <div *ngIf="isEditable">
+                            <label for="shipping_address_state" class="block text-sm font-semibold leading-6 text-gray-900">Shipping Address State</label>
+                            <div class="mt-2.5">
+                                <input type="text" name="shipping_address_state" [readonly]="!isEditable" id="shipping_address_state" formControlName="shipping_address_state" class="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
+                            </div>
+                        </div>
+                        <div *ngIf="isEditable">
+                            <label for="shipping_address_country" class="block text-sm font-semibold leading-6 text-gray-900">Shipping Address Country</label>
+                            <div class="mt-2.5">
+                                <input type="text" name="shipping_address_country" [readonly]="!isEditable" formControlName="shipping_address_country" id="shipping_address_country" class="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
+                            </div>
+                        </div>
+
+                        <div>
+                            <label for="description" class="block text-sm font-semibold leading-6 text-gray-900">Desrcription</label>
+                            <textarea name="description" id="description" rows="4" formControlName="description" [readonly]="!isEditable" class="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
                             </textarea>
                         </div>
-                        </div>
-                        <div>
-                            <label for="first-name" class="block text-sm font-semibold leading-6 text-gray-900">Desrcription</label>
-                            <textarea name="message" id="message" rows="4" formControlName="description" [readonly]="!isEditable" class="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
-                            </textarea>
-                        </div>
-                        <div>
-                            <label for="last-name" class="block text-sm font-semibold leading-6 text-gray-900">Assigned To</label>
+                        <div *ngIf="!isEditable">
+                            <label for="assigned_user_name" class="block text-sm font-semibold leading-6 text-gray-900">Assigned To</label>
                             <div class="mt-2.5">
                                 <input type="text" name="assigned_user_name" [readonly]="!isEditable" formControlName="assigned_user_name" id="assigned_user_name" class="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
                             </div>
@@ -124,13 +175,13 @@
                         </div>
                     </div>
                     <div class="grid grid-cols-1 gap-x-8 gap-y-6 sm:grid-cols-2">
-                        <div>
+                        <div *ngIf="!isEditable">
                             <label for="account_type" class="block text-sm font-semibold leading-6 text-gray-900">Type</label>
                             <div class="mt-2.5">
                                 <input type="text" name="account_type" [readonly]="!isEditable" formControlName="account_type"  id="account_type" class="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
                             </div>
                         </div>
-                        <div>
+                        <div *ngIf="!isEditable">
                             <label for="industry" class="block text-sm font-semibold leading-6 text-gray-900">Industry</label>
                             <div class="mt-2.5">
                                 <input type="text" name="industry" [readonly]="!isEditable" formControlName="industry" id="industry" class="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
@@ -148,13 +199,13 @@
                                 <input type="text" name="employees" [readonly]="!isEditable" formControlName="employees" id="employees" autocomplete="family-name" class="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
                             </div>
                         </div>
-                        <div class="sm:col-span-2">
+                        <div class="sm:col-span-2" *ngIf="!isEditable">
                             <label for="parent_name" class="block text-sm font-semibold leading-6 text-gray-900">Member Of</label>
                             <div class="mt-2.5">
                                 <input type="text" name="parent_name" id="parent_name" formControlName="parent_name" [readonly]="!isEditable" autocomplete="organization" class="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
                             </div>
                         </div>
-                        <div class="sm:col-span-2">
+                        <div class="sm:col-span-2" *ngIf="!isEditable">
                             <label for="campaign_name" class="block text-sm font-semibold leading-6 text-gray-900">Campaign</label>
                             <div class="mt-2.5">
                                 <input type="text" name="campaign_name" id="campaign_name" formControlName="campaign_name" [readonly]="!isEditable" autocomplete="organization" class="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
@@ -187,22 +238,28 @@
                         </div>
                     </div>
                     <div class="grid grid-cols-1 gap-x-8 gap-y-6 sm:grid-cols-2">
-                        <div>
+
+                          <div>
                             <label for="date_entered" class="block text-sm font-semibold leading-6 text-gray-900">Date Created</label>
-                            <div class="mt-2.5">
-                                <input type="text" name="date_entered" [readonly]="!isEditable" formControlName="date_entered"  id="date_entered" autocomplete="given-name" class="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
-                            </div>
-                        </div>
-                        <div>
+                              <mat-form-field>
+                                <input matInput [matDatepicker]="picker" placeholder="Select date and time" formControlName="date_entered" [readonly]="!isEditable">
+                                <mat-datepicker-toggle matSuffix [for]="picker" [disabled]="!isEditable"></mat-datepicker-toggle>
+                                <mat-datepicker #picker ></mat-datepicker>
+                              </mat-form-field>
+                          </div>
+
+                          <div>
                             <label for="date_modified" class="block text-sm font-semibold leading-6 text-gray-900">Date Modified</label>
-                            <div class="mt-2.5">
-                                <input type="text" name="date_modified" formControlName="date_modified" [readonly]="!isEditable" id="date_modified" autocomplete="family-name" class="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
-                            </div>
-                        </div>
-                        
+                              <mat-form-field>
+                                <input matInput [matDatepicker]="picker1" placeholder="Select date and time" formControlName="date_modified" [readonly]="!isEditable">
+                                <mat-datepicker-toggle matSuffix [for]="picker1" [disabled]="!isEditable"></mat-datepicker-toggle>
+                                <mat-datepicker #picker1 ></mat-datepicker>
+                              </mat-form-field>
+                          </div>
                     </div>
 
-                    </form>
+                    
+                </form>
             
             </div>
 

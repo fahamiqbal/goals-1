@@ -52,6 +52,8 @@ export class TableComponent implements AfterContentInit {
       module_name:"Accounts",
     }
     this.apiService.CALL(params, "get_entry_list").then((jsonData:any) => {
+      console.log(jsonData)
+
       var data = JSON.parse(jsonData).entry_list
       console.log(data)
       this.jsonData = data;
