@@ -75,6 +75,7 @@ import {logoutGuard} from "./shared/guards/logout.guard";
 
 
 const routes: Routes = [
+  { path: '', redirectTo: '/auth/login', pathMatch: 'full' },
   // auth views
   {
     path: 'auth',
@@ -82,7 +83,7 @@ const routes: Routes = [
     children: [
       { path: 'login', component: LoginComponent, canActivate: [logoutGuard],},
       { path: 'register', component: RegisterComponent, canActivate: [logoutGuard],},
-      // { path: '', redirectTo: 'login', pathMatch: 'full' },
+      { path: '', redirectTo: 'login', pathMatch: 'full' },
     ],
   },
   {
@@ -123,7 +124,7 @@ const routes: Routes = [
       {path: 'AOK_Knowledge_Base_Categories', component: AOKKnowledgeBaseCategoriesListViewComponent,canActivate:[authGuard],},
       {path: 'EmailTemplates', component: EmailTemplatesListViewComponent,canActivate:[authGuard],},
       {path: 'Surveys', component: SurveysListViewComponent,canActivate:[authGuard],},
-      // { path: '', redirectTo: 'login', pathMatch: 'full' },
+      { path: '', redirectTo: 'home', pathMatch: 'full' },
     ],
   },
 ];
