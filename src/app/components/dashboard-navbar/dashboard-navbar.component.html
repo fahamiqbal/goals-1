@@ -6,7 +6,7 @@
 <!--    &lt;!&ndash; navbar &ndash;&gt;-->
 <nav class="flex justify-between bg-palleteG1 text-white w-screen">
   <div class="px-5 xl:px-12 py-6 flex w-full items-center">
-    <a class="text-3xl font-bold font-heading" href="#">
+    <a class="text-3xl font-bold font-heading" >
       <img class="h-9" src="/assets/logos/company-logo.png" alt="logo">
       <!--          Logo Here.-->
     </a>
@@ -23,25 +23,13 @@
 
 
       <ul class="relative parent">
-        <a href="#" class="flex justify-between md:inline-flex p-4 items-center hover:bg-orange-600 space-x-2">
+        <a class="flex justify-between md:inline-flex p-4 items-center hover:bg-orange-600 space-x-2">
           <span>Profile</span>
           <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 fill-current pt-1" viewBox="0 0 24 24"><path d="M0 7.33l2.829-2.83 9.175 9.339 9.167-9.339 2.829 2.83-11.996 12.17z"/></svg>
         </a>
         <ul class="child transition duration-300 md:absolute top-full right-0 md:w-48 bg-white md:shadow-lg md:rounded-b ">
           <li>
-            <a href="#" class="flex px-4 py-3 hover:bg-palleteO3 text-palleteG1 hover:text-white">
-              <fa-icon  [icon]="userAvatar" [styles]="{'stroke': 'red', 'color': 'black'}" size="lg"></fa-icon>
-              View Profile
-            </a>
-          </li>
-          <li>
-            <a href="#" class="flex px-4 py-3 hover:bg-palleteO3 text-palleteG1 hover:text-white">
-              <fa-icon  [icon]="cog" [styles]="{'stroke': 'red', 'color': 'black'}" size="lg"></fa-icon>
-              Setting
-            </a>
-          </li>
-          <li>
-            <a href="#" class="flex px-4 py-3 hover:bg-palleteO3 text-palleteG1 hover:text-white">
+            <a (click)="logout()" class="flex px-4 py-3 hover:bg-palleteO3 text-palleteG1 hover:text-white">
               <fa-icon  [icon]="signOut" [styles]="{'stroke': 'red', 'color': 'black'}" size="lg"></fa-icon>
               Log Out
             </a>
@@ -56,25 +44,13 @@
 
   <!-- Responsive navbar -->
 
-  <a class="xl:hidden flex mr-6 items-center" href="#">
+  <a class="xl:hidden flex mr-6 items-center" >
     <ul class="relative parent">
-      <a href="#" class="flex justify-between md:inline-flex p-4 items-center hover:bg-orange-600 space-x-2">
+      <a class="flex justify-between md:inline-flex p-4 items-center hover:bg-orange-600 space-x-2">
         <span>Profile</span>
         <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 fill-current pt-1" viewBox="0 0 24 24"><path d="M0 7.33l2.829-2.83 9.175 9.339 9.167-9.339 2.829 2.83-11.996 12.17z"/></svg>
       </a>
       <ul class="child transition duration-300 md:absolute top-full right-0 md:w-48 bg-white md:shadow-lg md:rounded-b ">
-        <li>
-          <a href="#" class="flex px-4 py-3 hover:bg-palleteO3 text-palleteG1 hover:text-white">
-            <fa-icon  [icon]="userAvatar" [styles]="{'stroke': 'red', 'color': 'black'}" size="lg"></fa-icon>
-            View Profile
-          </a>
-        </li>
-        <li>
-          <a href="#" class="flex px-4 py-3 hover:bg-palleteO3 text-palleteG1 hover:text-white">
-            <fa-icon  [icon]="cog" [styles]="{'stroke': 'red', 'color': 'black'}" size="lg"></fa-icon>
-            Setting
-          </a>
-        </li>
         <li>
           <a (click)="logout()" class="flex px-4 py-3 hover:bg-palleteO3 text-palleteG1 hover:text-white">
             <fa-icon  [icon]="signOut" [styles]="{'stroke': 'red', 'color': 'black'}" size="lg"></fa-icon>
