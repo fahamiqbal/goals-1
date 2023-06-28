@@ -13,7 +13,7 @@ export class ApiService {
     var config = {
       method: 'get',
       param: params,
-      url: 'http://3.16.249.45/service/v4_1/rest.php?'+'method='+method+'&input_type=JSON&response_type=JSON&rest_data='+ JSON.stringify(params),
+      url: 'http://localhost/suitecrm7/service/v4_1/rest.php?'+'method='+method+'&input_type=JSON&response_type=JSON&rest_data='+ JSON.stringify(params),
     };
     return axios.get<any>(config.url)
       .then((response) => {
@@ -29,7 +29,7 @@ export class ApiService {
     var config = {
       method: 'get',
       param: params,
-      url: 'http://3.16.249.45?'+'method='+method+'&input_type=JSON&response_type=JSON&rest_data='+ JSON.stringify(params),
+      url: 'http://localhost/suitecrm7?'+'method='+method+'&input_type=JSON&response_type=JSON&rest_data='+ JSON.stringify(params),
     };
     return axios.get<any>(config.url)
       .then((response) => {

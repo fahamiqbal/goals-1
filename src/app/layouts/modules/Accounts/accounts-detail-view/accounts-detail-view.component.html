@@ -1,6 +1,6 @@
-    <div class="border-b border-gray-200 dark:border-gray-700 mt-1">
+    <div class="border-b border-gray-200 dark:border-gray-700">
         <nav class="-mb-0.5 flex justify-center bg-palleteG1" aria-label="Tabs" role="tablist">
-            
+
             <button type="button"  [class.selectTab]="activeTab ==='tab1'" class="btn2 hs-tab-active:font-semibold hs-tab-active:border-blue-600 hs-tab-active:text-blue-600 py-4 px-1 inline-flex items-center gap-2 border-b-[3px] border-transparent text-sm whitespace-nowrap text-gray-500 hover:text-blue-600" id="horizontal-alignment-item-1" data-hs-tab="#horizontal-alignment-1" aria-controls="horizontal-alignment-1" role="tab"
             (click)="activeTab = 'tab1'">
             Overview
@@ -25,10 +25,10 @@
     <div id="horizontal-alignment-1" role="tabpanel" aria-labelledby="horizontal-alignment-item-1" *ngIf="activeTab === 'tab1'">
 
         <div class="isolate px-6 py-14 sm:py-8 lg:px-8 bg-gradient-to-r from-palleteO3  to-palleteG1 min-h-screen">
-            
+
             <div class="backdrop-blur-md bg-white/30 mx-20 my-10 p-10">
 
-                <form action="#" method="POST" class="mx-auto mt-8  mb-8 max-w-4xl sm:mt-8" [formGroup]="myForm" *ngIf="myForm"> 
+                <form action="#" method="POST" class="mx-auto mt-8  mb-8 max-w-4xl sm:mt-8" [formGroup]="myForm" *ngIf="myForm">
                     <div class="flex justify-end">
                         <div class="ml-auto"  *ngIf="!isEditable" >
                           <a class="btn1" (click)="makeEditable()" >Edit</a>
@@ -37,7 +37,7 @@
                             <a class="btn" (click)="saveForm()" >Save</a>
                         </div>
                     </div>
-                    
+
 
                     <div class="grid grid-cols-1 gap-x-8 gap-y-6 sm:grid-cols-2">
                         <div>
@@ -59,19 +59,19 @@
                             </div>
                         </div>
                         <div>
-                            <label for="first-name" class="block text-sm font-semibold leading-6 text-gray-900">Fax</label>
+                            <label for="phone_fax" class="block text-sm font-semibold leading-6 text-gray-900">Fax</label>
                             <div class="mt-2.5">
                                 <input type="text" name="phone_fax" [readonly]="!isEditable" formControlName="phone_fax" id="phone_fax" class="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
                             </div>
                         </div>
-                        <div class="sm:col-span-2">
+                        <div class="sm:col-span-2" *ngIf="!isEditable">
                             <label for="email1" class="block text-sm font-semibold leading-6 text-gray-900">Email Address</label>
                             <div class="mt-2.5">
                                 <input type="text" name="email1" id="email1" [readonly]="!isEditable" formControlName="email1" class="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
                             </div>
                         </div>
-        
-        
+
+
                         <div class="sm:col-span-2" *ngIf="!isEditable">
                             <label for="message" class="block text-sm font-semibold leading-6 text-gray-900">Billing Address</label>
                             <div class="mt-2.5">
@@ -80,7 +80,7 @@
                                 </textarea>
                             </div>
                         </div>
-                        
+
                             <div *ngIf="isEditable">
                                 <label for="billing_address_street" class="block text-sm font-semibold leading-6 text-gray-900">Billing Address Street</label>
                                 <div class="mt-2.5">
@@ -105,7 +105,7 @@
                                     <input type="text" name="billing_address_country" [readonly]="!isEditable" formControlName="billing_address_country" id="billing_address_country" class="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
                                 </div>
                             </div>
-        
+
                         <div class="sm:col-span-2" *ngIf="!isEditable">
                             <label for="message" class="block text-sm font-semibold leading-6 text-gray-900">Shipping Address</label>
                             <div class="mt-2.5">
@@ -155,13 +155,13 @@
                     </form>
             </div>
 
-            
+
         </div>
 
     </div>
 
     <div id="horizontal-alignment-2"  role="tabpanel" aria-labelledby="horizontal-alignment-item-2" *ngIf="activeTab === 'tab2'">
-        
+
         <div class="isolate bg-white px-6 py-14 sm:py-8 lg:px-8 bg-gradient-to-r from-palleteO3  to-palleteG1 min-h-screen">
             <div class="backdrop-blur-md bg-white/30 mx-20 my-10 p-10">
 
@@ -211,7 +211,7 @@
                                 <input type="text" name="campaign_name" id="campaign_name" formControlName="campaign_name" [readonly]="!isEditable" autocomplete="organization" class="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
                             </div>
                         </div>
-                        
+
                     </div>
                     </form>
 
@@ -227,7 +227,7 @@
         <div class="isolate bg-white px-6 py-14 sm:py-8 lg:px-8 bg-gradient-to-r from-palleteO3  to-palleteG1 min-h-screen">
 
             <div class="backdrop-blur-md bg-white/30 mx-20 my-10 p-10">
-            
+
                 <form action="#" method="POST" [formGroup]="myForm" *ngIf="myForm"  class="mx-auto mt-8 mb-8 max-w-4xl sm:mt-8">
                     <div class="flex justify-end">
                         <div class="ml-auto"  *ngIf="!isEditable" >
@@ -258,13 +258,13 @@
                           </div>
                     </div>
 
-                    
+
                 </form>
-            
+
             </div>
 
 
-        
+
         </div>
 
     </div>

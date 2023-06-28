@@ -71,9 +71,6 @@ export class AccountsDetailViewComponent implements OnInit, AfterContentInit {
         this.date_modified = moment(this.date_modified).toDate(); // Parse the date string into a Date object
         this.myForm.controls['date_modified'].setValue(this.date_modified); // Update the value of date_entered form control
 
-
-        console.log(this.date_entered)
-        console.log(this.myForm)
       }
     }).catch((error) => {
       console.warn('Error fetching JSON data:', error);
@@ -83,16 +80,16 @@ export class AccountsDetailViewComponent implements OnInit, AfterContentInit {
   makeEditable() {
     this.isEditable = true;
   }
-  
+
   ngOnInit() {
     this.route.params.subscribe(params => {
       this.id = params['id'];
     });
-    
+
 
   }
 
-  saveForm() {
+  async saveForm() {
     if (this.myForm.valid) {
       // Perform your save logic here
       const date_entered = moment(this.myForm.get('date_entered')!.value).format("YYYY-MM-DD HH:mm:ss");
@@ -109,11 +106,98 @@ export class AccountsDetailViewComponent implements OnInit, AfterContentInit {
         setEntry.date_modified = date_modified
       }
 
-      console.log('Form saved:', setEntry);
+      let user = JSON.parse(localStorage.getItem('user') || '{}');
+      let nameValueList = this.getNameValueList(setEntry);
+      var params = {
+        session:user.id,
+        module_name:"Accounts",
+        name_value_list:nameValueList
+      }
+      await this.apiService.CALL(params, "set_entry");
+
       this.isEditable = false;
     }
   }
 
-
+  getNameValueList(setEntry:any) {
+    return {
+      id: {
+        "name": "id",
+        "value": this.id
+      },
+      name: {
+        "name": "name",
+        "value": setEntry.name
+      },
+      "date_entered": {
+        "name": "date_entered",
+        "value": setEntry.date_entered
+      },
+      "date_modified": {
+        "name": "date_modified",
+        "value": setEntry.date_modified
+      },
+      "description": {
+        "name": "description",
+        "value": setEntry.description
+      },
+      "industry": {
+        "name": "industry",
+        "value": setEntry.industry
+      },
+      "annual_revenue": {
+        "name": "annual_revenue",
+        "value": setEntry.annual_revenue
+      },
+      "phone_fax": {
+        "name": "phone_fax",
+        "value": setEntry.phone_fax
+      },
+      "billing_address_street": {
+        "name": "billing_address_street",
+        "value": setEntry.billing_address_street
+      },
+      "billing_address_city": {
+        "name": "billing_address_city",
+        "value": setEntry.billing_address_city
+      },
+      "billing_address_state": {
+        "name": "billing_address_state",
+        "value": setEntry.billing_address_state
+      },
+      "billing_address_postalcode": {
+        "name": "billing_address_postalcode",
+        "value": setEntry.billing_address_postalcode
+      },
+      "billing_address_country": {
+        "name": "billing_address_country",
+        "value": setEntry.billing_address_country
+      },
+      "phone_office": {
+        "name": "phone_office",
+        "value": setEntry.phone_office
+      },
+      "website": {
+        "name": "website",
+        "value": setEntry.website
+      },
+      "shipping_address_street": {
+        "name": "shipping_address_street",
+        "value": setEntry.shipping_address_city
+      },
+      "shipping_address_city": {
+        "name": "shipping_address_city",
+        "value": setEntry.shipping_address_city
+      },
+      "shipping_address_state": {
+        "name": "shipping_address_state",
+        "value": setEntry.shipping_address_state
+      },
+      "shipping_address_country": {
+        "name": "shipping_address_country",
+        "value": setEntry.shipping_address_country
+      },
+    }
+  }
 
 }
