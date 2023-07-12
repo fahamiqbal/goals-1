@@ -23,27 +23,52 @@ export class TableComponent implements AfterContentInit {
   jsonData:any;
   pageIndex = 0;
   pageSize = 10;
-  totalItems = 0;
-  // Example JSON data
+  totalPages: number = 0;
+  offset: number = 0;
+  totalAccounts: number = 0;
+
 
   constructor(private apiService: ApiService,private router:Router) {
   }
 
   ngAfterContentInit() {
-    this.getEntries();
+    this.loadAccounts();
+  }
 
+  async loadAccounts() {
+    this.offset = this.pageIndex * this.pageSize;
+    let user = JSON.parse(localStorage.getItem('user') || '{}');
+    var params = {
+      session:user.id,
+      module_name:"Accounts",
+      query: '',
+      order_by: null,
+      offset : this.offset,
+      select_fields: null,
+      $link_name_to_fields_array: null,
+      $max_results: this.pageSize,
+    }
+    await this.apiService.CALL(params, "get_entry_list").then((jsonData:any) => {
+      var data = JSON.parse(jsonData).entry_list
+      this.totalAccounts = JSON.parse(jsonData).total_count
+
+      this.jsonData = data;
+      this.totalPages = Math.ceil(this.totalAccounts / this.pageSize);
+      this.dataSource = new MatTableDataSource(this.jsonData);
+    }).catch((error) => {
+      console.error('Error fetching JSON data:', error);
+    });
   }
 
   redirectToDetails(id: string) {
     this.router.navigate(['/dashboard/AccountsDetailView/', id]);
   }
 
-
-  onPageChange(event: PageEvent) {
+  pageChanged(event: any) {
     this.pageIndex = event.pageIndex;
-    this.pageSize = event.pageSize;
-    this.loadData();
+    this.loadAccounts();
   }
+
 
   getEntries() {
     let user = JSON.parse(localStorage.getItem('user') || '{}');
@@ -52,8 +77,6 @@ export class TableComponent implements AfterContentInit {
       module_name:"Accounts",
     }
     this.apiService.CALL(params, "get_entry_list").then((jsonData:any) => {
-      console.log(jsonData)
-
       var data = JSON.parse(jsonData).entry_list
       console.log(data)
       this.jsonData = data;
@@ -65,7 +88,6 @@ export class TableComponent implements AfterContentInit {
   }
 
   loadData() {
-    debugger;
     let user = JSON.parse(localStorage.getItem('user') || '{}');
     if(user.id)
     {
@@ -73,7 +95,6 @@ export class TableComponent implements AfterContentInit {
         session:user.id,
         module_name:this.module_name,
       }
-      console.log(params);
       this.apiService.SyncCALL(params, 'get_entry_list')
         .subscribe(function (response: any) {
             console.log(response)

@@ -25,5 +25,5 @@
   <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
 </table>
 
-<mat-paginator [length]="totalItems" [pageIndex]="pageIndex" [pageSize]="pageSize" (page)="onPageChange($event)"></mat-paginator>
+<mat-paginator [length]="totalAccounts" [pageIndex]="pageIndex" [pageSize]="pageSize" (page)="pageChanged($event)"></mat-paginator>
 
