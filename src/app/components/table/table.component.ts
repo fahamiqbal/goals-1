@@ -6,6 +6,7 @@ import { tap } from 'rxjs/operators';
 import {ApiService} from "../../core/crm-api/api.service";
 import {MatTableDataSource} from "@angular/material/table";
 import { Router } from '@angular/router';
+import {MatSort} from "@angular/material/sort";
 
 @Component({
   selector: 'app-table',
@@ -16,6 +17,8 @@ export class TableComponent implements AfterContentInit {
 
   @Input() module_name = '';
   @ViewChild(MatPaginator) paginator!: MatPaginator;
+  @ViewChild(MatSort) sort!: MatSort;
+
 
   displayedColumns: string[] = ['Name', 'City', 'Phone', 'Date Created', 'Email'];
   // @ts-ignore
@@ -26,9 +29,11 @@ export class TableComponent implements AfterContentInit {
   totalPages: number = 0;
   offset: number = 0;
   totalAccounts: number = 0;
-
+  filters: string = '';
 
   constructor(private apiService: ApiService,private router:Router) {
+    this.dataSource = new MatTableDataSource();
+    this.dataSource.sort = this.sort;
   }
 
   ngAfterContentInit() {
@@ -41,7 +46,7 @@ export class TableComponent implements AfterContentInit {
     var params = {
       session:user.id,
       module_name:"Accounts",
-      query: '',
+      query: this.filters,
       order_by: null,
       offset : this.offset,
       select_fields: null,
@@ -55,6 +60,9 @@ export class TableComponent implements AfterContentInit {
       this.jsonData = data;
       this.totalPages = Math.ceil(this.totalAccounts / this.pageSize);
       this.dataSource = new MatTableDataSource(this.jsonData);
+      this.dataSource.data = this.jsonData;
+
+
     }).catch((error) => {
       console.error('Error fetching JSON data:', error);
     });
@@ -81,6 +89,7 @@ export class TableComponent implements AfterContentInit {
       console.log(data)
       this.jsonData = data;
       this.dataSource = new MatTableDataSource(this.jsonData);
+      this.dataSource.sort = this.sort;
       this.dataSource.paginator = this.paginator;
     }).catch((error) => {
       console.error('Error fetching JSON data:', error);

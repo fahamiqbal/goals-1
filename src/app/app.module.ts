@@ -117,6 +117,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
+import {MatSortModule} from "@angular/material/sort";
 
 
 @NgModule({
@@ -234,13 +235,14 @@ import { MatNativeDateModule } from '@angular/material/core';
         ReactiveFormsModule,
         FontAwesomeModule,
         BrowserAnimationsModule,
-      MatTableModule,
-      MatPaginatorModule,
-      FormsModule,
-      MatInputModule,
-      MatFormFieldModule,
-      MatDatepickerModule,
-      MatNativeDateModule
+        MatTableModule,
+        MatPaginatorModule,
+        FormsModule,
+        MatInputModule,
+        MatFormFieldModule,
+        MatDatepickerModule,
+        MatNativeDateModule,
+        MatSortModule
     ],
   providers: [],
   bootstrap: [AppComponent]
