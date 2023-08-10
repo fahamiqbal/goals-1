@@ -1,4 +1,4 @@
-import {Component, Input} from '@angular/core';
+import {Component, Input, ViewEncapsulation} from '@angular/core';
 import {  ViewChild, AfterContentInit } from '@angular/core';
 import { MatPaginator, PageEvent } from '@angular/material/paginator';
 import { merge } from 'rxjs';
@@ -11,13 +11,14 @@ import {MatSort} from "@angular/material/sort";
 @Component({
   selector: 'app-table',
   templateUrl: './table.component.html',
-  styleUrls: ['./table.component.scss']
+  styleUrls: ['./table.component.scss'],
+  encapsulation: ViewEncapsulation.None // Add this line
 })
 export class TableComponent implements AfterContentInit {
 
   @Input() module_name = '';
   @ViewChild(MatPaginator) paginator!: MatPaginator;
-  @ViewChild(MatSort) sort!: MatSort;
+  @ViewChild(MatSort, { static: true }) sort!: MatSort;
 
 
   displayedColumns: string[] = ['Name', 'City', 'Phone', 'Date Created', 'Email'];
@@ -38,16 +39,43 @@ export class TableComponent implements AfterContentInit {
 
   ngAfterContentInit() {
     this.loadAccounts();
+    this.sort.sortChange.subscribe(() => {
+      const sortDirection = this.sort.direction;
+      let sortBy = this.sort.active;
+
+      switch (sortBy) {
+        case 'Name':
+          sortBy = ' name '+sortDirection;
+          break;
+        case 'City':
+          sortBy = ' billing_address_city '+sortDirection;
+          break;
+        case 'Phone':
+          sortBy = ' phone_office '+sortDirection;
+          break;
+        case 'Email':
+          sortBy = ' email1 '+sortDirection;
+          break;
+        case 'Date Created':
+          sortBy = ' date_entered '+sortDirection;
+          break;
+        default:
+          sortBy = '';
+      }
+
+      // @ts-ignore
+      this.loadAccounts(sortBy, sortDirection);
+    });
   }
 
-  async loadAccounts() {
+  async loadAccounts(sortBy = null, sortDirection = null ) {
     this.offset = this.pageIndex * this.pageSize;
     let user = JSON.parse(localStorage.getItem('user') || '{}');
     var params = {
       session:user.id,
       module_name:"Accounts",
       query: this.filters,
-      order_by: null,
+      order_by: sortBy,
       offset : this.offset,
       select_fields: null,
       $link_name_to_fields_array: null,
@@ -61,8 +89,6 @@ export class TableComponent implements AfterContentInit {
       this.totalPages = Math.ceil(this.totalAccounts / this.pageSize);
       this.dataSource = new MatTableDataSource(this.jsonData);
       this.dataSource.data = this.jsonData;
-
-
     }).catch((error) => {
       console.error('Error fetching JSON data:', error);
     });
@@ -74,7 +100,29 @@ export class TableComponent implements AfterContentInit {
 
   pageChanged(event: any) {
     this.pageIndex = event.pageIndex;
-    this.loadAccounts();
+    const sortDirection = this.sort.direction;
+    let sortBy = this.sort.active;
+    switch (sortBy) {
+      case 'Name':
+        sortBy = ' name '+sortDirection;
+        break;
+      case 'City':
+        sortBy = ' billing_address_city '+sortDirection;
+        break;
+      case 'Phone':
+        sortBy = ' phone_office '+sortDirection;
+        break;
+      case 'Email':
+        sortBy = ' email1 '+sortDirection;
+        break;
+      case 'Date Created':
+        sortBy = ' date_entered '+sortDirection;
+        break;
+      default:
+        sortBy = '';
+    }
+    // @ts-ignore
+    this.loadAccounts(sortBy);
   }
 
 
